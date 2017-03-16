@@ -75,6 +75,8 @@ def transactions():
   for i in transactions:
     name = i['name']
     name = name.upper()
+    if "-" in name:
+        name = name.replace("-", " ")
     names_list = name.split(" ")
     names_list = names_list[:3]
 
@@ -85,6 +87,7 @@ def transactions():
         names_list.remove(word)
       elif not (any(vowel in word for vowel in ["A", "E", "I", "O", "U"])):
         names_list.remove(word)
+
 
       if len(names_list) == 0:
         continue
