@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> Hangman </title>
+    <link rel="stylesheet" type="text/css" href="static/style2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+ 
+ <div id="top">
+     <h3>
+         <p> You purchased an item from them for ${{game.amount}} on {{game.date}} </p>
+         <p> Your next transaction was {{game.nextTrans}} </p>
+    </h3>
+</div>
+
+ <div id="play-area"> 
+    <div id="hangman">
+        <svg width="300" height="500" id="drawing">
+            <!-- Structure -->
+
+            <g id="hangstand">
+                <title> Hangstand </title>
+                <line x1="200" y1="100" x2="200" y2="175" style="stroke:rgb(0,0,0);stroke-width:2" />
+                <line x1="200" y1="100" x2="75" y2="100" style="stroke:rgb(0,0,0);stroke-width:2" />
+                <line x1="75" y1="100" x2="75" y2="450" style="stroke:rgb(0,0,0);stroke-width:2" />
+                <line x1="25" y1="450" x2="125" y2="450" style="stroke:rgb(0,0,0);stroke-width:7" />
+            </g>
+
+            <g id="hang">
+                {% if game.lenM >= 1 %}
+                <ellipse fill=#ff0000 cx="200" cy="150" rx="25" ry="25"/>
+                {% endif %}
+                {% if game.lenM >= 2 %}
+                <ellipse fill=#ff0000 cx="200" cy="225" rx="35" ry="60"/>  
+                {% endif %}
+                {% if game.lenM >= 3 %}
+                <line fill=#ff0000 x1="200" y1 ="225" x2 = "260" y2 = "150" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                {% endif %}
+                {% if game.lenM >= 4 %}
+
+                <line fill=#ff0000 x1="200" y1 ="225" x2 = "140" y2 = "150" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                {% endif %}
+                {% if game.lenM >= 5 %}
+
+                <line fill=#ff0000 x1="200" y1 ="225" x2 = "150" y2 = "325" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                {% endif %}
+                {% if game.lenM >= 6 %}
+                <line fill=#ff0000 x1="200" y1 ="225" x2 = "250" y2 = "325" style="stroke:rgb(255,0,0);stroke-width:2"/>
+                {% endif %}
+            </g>
+        </svg>
+    </div>
+
+    <div id="letters-area">
+        <h1 id="current" class="spaced"> {{game.current}} </h1>
+        <div id="mistakes">
+            <p> Mistakes: {% for i in game.mistakes %} {{ i }} {% endfor %} </p>
+        </div>
+
+        {% if not game.over %}
+        <form method="POST" name="letters" class="form-inline vspace">
+            <input type="text" name="letter" maxlength="1">
+            <button class="Button Button2" type="submit" value="Submit"> Submit </button>
+        </form>
+        {% endif %}
+
+        {% if game.won %}
+        <h3> Good job :) Now play another one </h3>
+        {% endif %}
+        {% if game.lost %}
+        <h3> The word was {{game.word}} </h3>
+        <h3> You killed me. :'( </h3>
+        {% endif %}
+        
+
+        <div id = "New">
+            <form action="/play">
+                <button class="Button" type="submit" value="New Game"> New Game </button>
+            </form>
+        </div>
+        
+    </div>
+
+</div>
+
+
+
+<script src="static/jquery.min.js"></script>
+<script src="static/main.js"></script>
+
+</body>
+
+</html>

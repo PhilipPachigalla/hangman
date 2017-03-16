@@ -1,0 +1,52 @@
+html {
+    color: #444;
+	font: helvetica, arial, sans-serif;
+
+    background: #f9f9f9;
+}
+
+
+#top{
+    text-align: center
+}
+
+#play-area{
+    position: relative;
+}
+
+#hangman{
+    float: left;
+    width: 50%;
+}
+#letters-area{
+    margin-top: 50px;
+    float:right;
+    width: 50%;
+}
+
+#person{
+    position: relative;
+    float: left;   
+}
+
+#New{
+    margin-top: 50px;
+}
+
+.Button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.Button2 {
+    padding: 5px 10px;
+    background-color: #e7e7e7; color: black;} /* Gray */ 
+
