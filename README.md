@@ -1,4 +1,4 @@
-A simple Hangman game where the words are the names of you transactions (via Plaid API)
+A simple Hangman game where the words are the names of your transactions (via Plaid API)
 
 # Fill in your Plaid API keys (client ID, secret, public_key) in server.py
 
